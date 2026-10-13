@@ -1,9 +1,9 @@
-/* Hero ዋና ክፍል */
+
 .hero {
   position: relative;
   width: 100%;
   min-height: calc(100vh - 70px);
-  margin-top: 70px; /* Navbarሩ እንዳይሸፍነው ከታች እንዲጀምር */
+  margin-top: 70px; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,7 +11,7 @@
   box-sizing: border-box;
 }
 
-/* ጀርባ ላይ የሚታዩ የሚያበሩ ኦውራዎች */
+
 .ambient-glow {
   position: absolute;
   border-radius: 50%;
@@ -36,7 +36,7 @@
   left: 5%;
 }
 
-/* ዋናው ኮንቴነር */
+
 .hero-content {
   position: relative;
   z-index: 10;
@@ -49,7 +49,7 @@
   gap: 50px;
 }
 
-/* ግራው ክፍል */
+
 .hero-text-col {
   flex: 1.2;
 }
@@ -77,7 +77,7 @@
 }
 
 .hero-headline {
-  font-size: 3.5rem;
+  font-size: 2.0rem;
   font-weight: 900;
   line-height: 1.1;
   color: #ffffff;
@@ -155,7 +155,7 @@
   cursor: pointer;
 }
 
-/* ቴክኖሎጂ ታጎች */
+
 .tech-stack-row {
   display: flex;
   gap: 12px;
@@ -172,7 +172,7 @@
   color: #94a3b8;
 }
 
-/* የቀኙ ክፍል: ፎቶ እና Floating Cards */
+
 .hero-visual-col {
   flex: 0.8;
   display: flex;
@@ -209,7 +209,7 @@
   background: linear-gradient(to top, rgba(11, 15, 25, 0.7) 0%, transparent 60%);
 }
 
-/* Floating Cards */
+
 .floating-card {
   position: absolute;
   display: flex;
@@ -266,7 +266,7 @@
   font-weight: 700;
 }
 
-/* QR ባጅ */
+
 .floating-qr-badge {
   position: absolute;
   bottom: -15px;
@@ -279,7 +279,7 @@
   z-index: 25;
 }
 
-/* Modal Popup */
+
 .modal-backdrop {
   position: fixed;
   inset: 0;

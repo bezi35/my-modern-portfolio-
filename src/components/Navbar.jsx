@@ -1,27 +1,44 @@
 import React from 'react';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Home, User, Briefcase, PhoneCall } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = () => {
   return (
     <nav className="navbar">
-    <div className="navbar-content">
-       <div className="navbar-logo">
-        <Sparkles size={32} color="white" />
-        <span className="navbar-title">Beza</span>
-       </div>
+      <div className="navbar-content">
+        
+        {/* Logo */}
+        <div className="navbar-logo">
+          <Sparkles size={24} className="sparkle-icon" />
+          <span className="navbar-title">Beza</span>
+        </div>
 
+        {/* Links with Icons */}
+        <div className="navbar-links">
+          <a href="#home" className="nav-link">
+            <Home size={16} />
+            <span>Home</span>
+          </a>
 
-       <nav className="navbar-links">
-        <a href="#home" className="nav-link">Home</a>
-          <a href="#about" className="nav-link">About</a>
-          <a href="#projects" className="nav-link">Projects</a>
-          <a href="#contact" className="nav-link">Contact</a>
-        </nav>
+          <a href="#about" className="nav-link">
+            <User size={16} />
+            <span>About</span>
+          </a>
 
-    </div>
+          <a href="#projects" className="nav-link">
+            <Briefcase size={16} />
+            <span>Projects</span>
+          </a>
+
+          <a href="#contact" className="nav-link contact-btn-link">
+            <PhoneCall size={16} />
+            <span>Contact</span>
+          </a>
+        </div>
+
+      </div>
     </nav>
   );
-}
+};
 
 export default Navbar;
