@@ -1,19 +1,19 @@
 import React from 'react';
-import { Sparkles, Home, User, Briefcase, PhoneCall } from 'lucide-react';
+import { Sparkles, Home, User, Briefcase, PhoneCall, Sun, Moon } from 'lucide-react';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ isDark, toggleTheme }) => {
   return (
     <nav className="navbar">
-      <div className="navbar-content">
+      <div className="navbar-container">
         
-        {/* Logo */}
+        
         <div className="navbar-logo">
-          <Sparkles size={24} className="sparkle-icon" />
+          <Sparkles size={22} className="sparkle-icon" />
           <span className="navbar-title">Beza</span>
         </div>
 
-        {/* Links with Icons */}
+      
         <div className="navbar-links">
           <a href="#home" className="nav-link">
             <Home size={16} />
@@ -30,10 +30,19 @@ const Navbar = () => {
             <span>Projects</span>
           </a>
 
-          <a href="#contact" className="nav-link contact-btn-link">
+          <a href="#contact" className="nav-link contact-btn">
             <PhoneCall size={16} />
             <span>Contact</span>
           </a>
+
+          <button 
+            type="button"
+            className="theme-btn" 
+            onClick={toggleTheme} 
+            title="Switch Theme"
+          >
+            {isDark ? <Sun size={18} color="#fbbf24" /> : <Moon size={18} color="#6366f1" />}
+          </button>
         </div>
 
       </div>

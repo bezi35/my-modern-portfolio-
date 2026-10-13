@@ -1,14 +1,18 @@
-import React from 'react';
-import { QRCodeSVG } from 'qrcode.react';
-import { Mail, Download, Code, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-function App() {
+import './App.css';
 
+function App() {
+  const [isDark, setIsDark] = useState(true);
+
+  const toggleTheme = () => {
+    setIsDark(!isDark);
+  };
 
   return (
-    <div className="app-container">
-      <Navbar />
+    <div className={`app-root ${isDark ? 'dark-theme' : 'light-theme'}`}>
+      <Navbar isDark={isDark} toggleTheme={toggleTheme} />
       <Hero />
     </div>
   );
