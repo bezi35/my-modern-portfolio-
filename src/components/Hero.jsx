@@ -123,16 +123,7 @@ const Hero = () => {
               <div className="photo-overlay"></div>
             </div>
 
-            {/* Floating Card: 4th Year */}
-            <div className="floating-card float-top-left">
-              <div className="float-icon-box purple-box">
-                <Terminal size={18} />
-              </div>
-              <div>
-                <p className="float-label">Academic Status</p>
-                <h4 className="float-value">4th Year SE</h4>
-              </div>
-            </div>
+            
 
             {/* Floating Card: Stack */}
             <div className="floating-card float-bottom-right">
@@ -145,10 +136,7 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Floating QR Badge */}
-            <div className="floating-qr-badge" onClick={() => setShowQrModal(true)} title="Click to scan">
-              <QRCodeSVG value={portfolioUrl} size={48} />
-            </div>
+          
 
           </div>
         </div>

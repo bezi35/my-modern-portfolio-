@@ -61,13 +61,14 @@
   font-weight: 500;
   padding: 8px 14px;
   border-radius: 10px;
-  transition: all 0.25s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* የልስላሴ ፍጥነት */
   white-space: nowrap;
 }
 
 .nav-link:hover {
-  color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.08);
+  color: #f472b6;
+  background-color: rgba(244, 114, 182, 0.1);
+  transform: translateY(-2px); /* ማውዙ ሲያርፍበት በ 2px ከፍ ይላል */
 }
 
 .contact-btn {
