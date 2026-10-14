@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import Project from './components/Project';
 import './App.css';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
       <Hero />
       <About />
+      <Project />
     </div>
     
   );
