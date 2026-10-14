@@ -1,23 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
-import { Download, Sparkles, Terminal, Layers, ArrowUpRight, QrCode } from 'lucide-react';
-import myPhoto from '../assets/profile.jpg'; 
+import { Download, Terminal, Layers, ArrowUpRight, QrCode } from 'lucide-react';
+import myPhoto from '../assets/profile.jpg';
 import './Hero.css';
 
 const Hero = () => {
   const [showQrModal, setShowQrModal] = useState(false);
   const portfolioUrl = "https://github.com/bezi35";
 
+  // Typing Animation ዝርዝር
+  const titles = [
+    "Full-Stack MERN Developer.",
+    "Scalable Systems Architect.",
+    "Creative & Elegant UI Designer.",
+    "."
+  ];
+
+  const [textIndex, setTextIndex] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const fullText = titles[textIndex];
+    let speed = isDeleting ? 40 : 80; // የመጻፊያ እና የማጥፊያ ፍጥነት
+
+    if (!isDeleting && currentText === fullText) {
+      speed = 1800; // ጽሑፉ ተጽፎ ሲያልቅ ለአፍታ ቆም የሚልበት ሰዓት
+    }
+
+    const timer = setTimeout(() => {
+      if (!isDeleting && currentText !== fullText) {
+        setCurrentText(fullText.substring(0, currentText.length + 1));
+      } else if (!isDeleting && currentText === fullText) {
+        setIsDeleting(true);
+      } else if (isDeleting && currentText !== '') {
+        setCurrentText(fullText.substring(0, currentText.length - 1));
+      } else if (isDeleting && currentText === '') {
+        setIsDeleting(false);
+        setTextIndex((prev) => (prev + 1) % titles.length);
+      }
+    }, speed);
+
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, textIndex]);
+
   return (
     <section className="hero" id="home">
       
-     
+      {/* ጀርባ ላይ የሚታዩ የሚያበሩ ኦውራዎች */}
       <div className="ambient-glow glow-1"></div>
       <div className="ambient-glow glow-2"></div>
 
       <div className="hero-content">
         
-        
+        {/* የግራው ክፍል */}
         <div className="hero-text-col">
           <div className="status-badge">
             <span className="pulsing-dot"></span>
@@ -25,14 +61,20 @@ const Hero = () => {
           </div>
 
           <h1 className="hero-headline">
-            Obsessed with clean code<br />
+            Obsessed with clean code <br />
             <span className="gradient-text">elegant architecture</span> <br />
-           and systems that actually scale.
+            and systems that scale.
           </h1>
 
+          {/* እየተጻፈ የሚቀያየረው ማዕረግ (Typing Animation) */}
+          <div className="typing-container">
+            <span className="typing-prefix">I am a </span>
+            <span className="typing-animated-text">{currentText}</span>
+            <span className="typing-cursor">|</span>
+          </div>
+
           <p className="hero-bio">
-            I am <strong className="text-white">Bezawite Zelalem</strong>, Software Engineering student blending solid engineering principles with modern, high-performance web design. Building with the MERN stack.<br />
-                 Crafting full-stack web applications with the MERN stack.
+            I am <strong className="text-white">Bezawite Zelalem</strong>, a 4th-year Software Engineering student blending solid engineering principles with modern, high-performance web design. Specializing in the MERN stack.
           </p>
 
           <div className="hero-cta-group">
@@ -41,12 +83,16 @@ const Hero = () => {
               <ArrowUpRight size={18} />
             </a>
 
-            <button className="secondary-glass-btn">
+            {/* Resume CV Download Button */}
+            <a 
+              href="/resume.pdf" 
+              download="Bezawite_Zelalem_CV.pdf"
+              className="secondary-glass-btn"
+            >
               <Download size={18} />
               <span>Resume (CV)</span>
-            </button>
+            </a>
 
-           
             <button 
               className="qr-trigger-btn"
               onClick={() => setShowQrModal(!showQrModal)}
@@ -56,7 +102,6 @@ const Hero = () => {
             </button>
           </div>
 
-          
           <div className="tech-stack-row">
             <span className="tech-tag">React</span>
             <span className="tech-tag">Node.js</span>
@@ -65,27 +110,31 @@ const Hero = () => {
           </div>
         </div>
 
-        
+        {/* የቀኙ ክፍል: ፎቶ እና Floating Cards */}
         <div className="hero-visual-col">
           <div className="visual-wrapper">
             
-         
             <div className="photo-frame">
               <img 
                 src={myPhoto} 
-                alt="Beza - Software Engineer" 
+                alt="Bezawite Zelalem" 
                 className="profile-img"
-                onError={(e) => {
-                  
-                  e.target.src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop";
-                }}
               />
               <div className="photo-overlay"></div>
             </div>
 
-          
+            {/* Floating Card: 4th Year */}
+            <div className="floating-card float-top-left">
+              <div className="float-icon-box purple-box">
+                <Terminal size={18} />
+              </div>
+              <div>
+                <p className="float-label">Academic Status</p>
+                <h4 className="float-value">4th Year SE</h4>
+              </div>
+            </div>
 
-           
+            {/* Floating Card: Stack */}
             <div className="floating-card float-bottom-right">
               <div className="float-icon-box pink-box">
                 <Layers size={18} />
@@ -96,14 +145,17 @@ const Hero = () => {
               </div>
             </div>
 
-            
+            {/* Floating QR Badge */}
+            <div className="floating-qr-badge" onClick={() => setShowQrModal(true)} title="Click to scan">
+              <QRCodeSVG value={portfolioUrl} size={48} />
+            </div>
 
           </div>
         </div>
 
       </div>
 
-      
+      {/* QR Code Modal Popup */}
       {showQrModal && (
         <div className="modal-backdrop" onClick={() => setShowQrModal(false)}>
           <div className="modal-card" onClick={(e) => e.stopPropagation()}>

@@ -330,3 +330,43 @@
   cursor: pointer;
   font-weight: 600;
 }
+/* Typing Animation Style */
+.typing-container {
+  margin-top: 18px;
+  font-size: 1.35rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  min-height: 38px;
+}
+
+.typing-prefix {
+  color: #94a3b8;
+  margin-right: 8px;
+}
+
+.typing-animated-text {
+  color: #f472b6;
+  font-weight: 700;
+}
+
+.typing-cursor {
+  color: #a855f7;
+  font-weight: 300;
+  margin-left: 2px;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Light Mode Typing Adjustments */
+.light-theme .typing-prefix {
+  color: #64748b;
+}
+
+.light-theme .typing-animated-text {
+  color: #db2777;
+}

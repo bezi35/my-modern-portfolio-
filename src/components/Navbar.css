@@ -43,7 +43,8 @@
   -webkit-text-fill-color: transparent;
 }
 
-.navbar-links {
+/* የኮምፒውተር ሊንኮች */
+.desktop-links {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -97,4 +98,92 @@
 .theme-btn:hover {
   background: rgba(255, 255, 255, 0.15);
   transform: scale(1.08);
+}
+
+/* የስልክ አዝራሮች (በኮምፒውተር ላይ እንዳይታዩ ይደበቃሉ) */
+.mobile-actions {
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+
+.hamburger-btn {
+  background: none;
+  border: none;
+  color: #f8fafc;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+/* በስልክ የሚወርደው ሜኑ (Mobile Dropdown) */
+.mobile-dropdown {
+  position: absolute;
+  top: 75px;
+  left: 0;
+  width: 100%;
+  background: rgba(11, 15, 25, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 0 24px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+
+.mobile-dropdown.open {
+  max-height: 300px;
+  padding: 20px 24px;
+}
+
+.mobile-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobile-contact-link {
+  border-bottom: none;
+  color: #f472b6;
+  font-weight: 600;
+}
+
+/* 📱 Responsive Media Queries (ስክሪኑ ከ 768px በታች ሲሆን) */
+@media (max-width: 768px) {
+  .desktop-links {
+    display: none; /* የኮምፒውተሩ ሊንኮች ይጠፋሉ */
+  }
+
+  .mobile-actions {
+    display: flex; /* የስልኩ ቁልፎች ይወጣሉ */
+  }
+
+  .navbar-container {
+    padding: 0 20px;
+  }
+}
+
+/* Light Mode ድጋፍ ለስልክ ሜኑ */
+.light-theme .mobile-dropdown {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+.light-theme .mobile-link {
+  color: #334155;
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+
+.light-theme .hamburger-btn {
+  color: #0f172a;
 }
