@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle, Sparkles } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import './Contact.css';
 
 const Contact = () => {
-  // የ Form ዳታዎችን ለመያዝ
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,32 +10,61 @@ const Contact = () => {
     message: ''
   });
 
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState({
+    submitting: false,
+    success: false,
+    error: false,
+    message: ''
+  });
 
-  // ጽሑፍ ሲጻፍ ዳታውን የሚቀይር ፈንክሽን
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Submit ሲደረግ የሚሰራ ፈንክሽን
-  const handleSubmit = (e) => {
+  // መረጃውን ወደ Node.js Backend የምንልክበት ዋናው ፈንክሽን
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // እዚህ ጋር ወደፊት ከ Backend (Node.js/MongoDB) ጋር እናገናኘዋለን
-    console.log("Submitted Data:", formData);
-    setSubmitted(true);
-    
-    // ከ 4 ሰከንድ በኋላ መልዕክቱን ማጽዳት
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 4000);
+    setStatus({ submitting: true, success: false, error: false, message: '' });
+
+    try {
+      // ወደ Backend ሰርቨራችን POST ጥሪ እናደርጋለን
+      const response = await fetch('http://localhost:5001/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setStatus({
+          submitting: false,
+          success: true,
+          error: false,
+          message: data.message || 'መልዕክትዎ በተሳካ ሁኔታ ተልኳል!'
+        });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error(data.message || 'ስህተት ተፈጥሯል!');
+      }
+
+    } catch (err) {
+      console.error("Submission Error:", err);
+      setStatus({
+        submitting: false,
+        success: false,
+        error: true,
+        message: 'ሰርቨሩ ጋር መገናኘት አልተቻለም፤ እባክዎ እንደገና ይሞክሩ!'
+      });
+    }
   };
 
   return (
     <section className="contact-section" id="contact">
       <div className="contact-container">
         
-        {/* 1. ርዕስ */}
         <div className="section-header">
           <span className="section-tag">LET'S CONNECT</span>
           <h2 className="section-title">Start A <span className="gradient-text">Conversation</span></h2>
@@ -45,10 +73,9 @@ const Contact = () => {
           </p>
         </div>
 
-        {/* 2. ዋናው ይዘት (ግራና ቀኝ) */}
         <div className="contact-grid">
           
-          {/* የግራው ክፍል: አድራሻ እና ማህበራዊ መረጃዎች */}
+          {/* Info Card */}
           <div className="contact-info-card">
             <h3 className="info-title">Contact Channels</h3>
             <p className="info-desc">
@@ -89,23 +116,37 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* ሁኔታን የሚያሳይ ትንሽ ባጅ */}
             <div className="availability-box">
               <span className="online-beacon"></span>
               <span>Available for Spring/Summer 2025 Internship</span>
             </div>
           </div>
 
-          {/* የቀኙ ክፍል: የመልዕክት መላኪያ ቅጽ (Form) */}
+          {/* Form */}
           <div className="contact-form-card">
-            {submitted ? (
+            {status.success ? (
               <div className="success-message">
                 <CheckCircle size={48} className="success-icon" />
-                <h4 className="success-title">Message Transmitted!</h4>
-                <p className="success-text">Thank you for reaching out, Beza will review your message shortly.</p>
+                <h4 className="success-title">Message Received!</h4>
+                <p className="success-text">{status.message}</p>
+                <button 
+                  className="submit-btn" 
+                  style={{ marginTop: '20px' }}
+                  onClick={() => setStatus({ ...status, success: false })}
+                >
+                  አዲስ መልዕክት ላክ
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="contact-form">
+                
+                {status.error && (
+                  <div style={{ color: '#fb7185', background: 'rgba(251,113,133,0.1)', padding: '12px', borderRadius: '10px', fontSize: '0.9rem', display: 'flex', gap: '8px', alignItems: 'center' }}>
+                    <AlertCircle size={18} />
+                    <span>{status.message}</span>
+                  </div>
+                )}
+
                 <div className="form-group-row">
                   <div className="form-group">
                     <label className="form-label">Full Name</label>
@@ -159,8 +200,8 @@ const Contact = () => {
                   ></textarea>
                 </div>
 
-                <button type="submit" className="submit-btn">
-                  <span>Send Message</span>
+                <button type="submit" className="submit-btn" disabled={status.submitting}>
+                  <span>{status.submitting ? 'በመላክ ላይ...' : 'Send Message'}</span>
                   <Send size={18} />
                 </button>
               </form>

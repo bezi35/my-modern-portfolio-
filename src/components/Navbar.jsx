@@ -3,7 +3,7 @@ import { Sparkles, Home, User, Briefcase, PhoneCall, Sun, Moon, Menu, X } from '
 import './Navbar.css';
 
 const Navbar = ({ isDark, toggleTheme }) => {
-  // የስልክ ሜኑ መከፈት እና መዘጋትን የሚቆጣጠር State
+  
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -18,13 +18,13 @@ const Navbar = ({ isDark, toggleTheme }) => {
     <nav className="navbar">
       <div className="navbar-container">
         
-        {/* በስተግራ: ስምሽ */}
+        
         <div className="navbar-logo">
           <Sparkles size={22} className="sparkle-icon" />
           <span className="navbar-title">Beza</span>
         </div>
 
-        {/* በስተቀኝ: ለኮምፒውተር (Desktop View) የሚታዩ ሊንኮች */}
+        
         <div className="desktop-links">
           <a href="#home" className="nav-link">
             <Home size={16} />
@@ -46,7 +46,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
             <span>Contact</span>
           </a>
 
-          {/* Theme Toggle Button */}
+         
           <button 
             type="button"
             className="theme-btn" 
@@ -57,9 +57,9 @@ const Navbar = ({ isDark, toggleTheme }) => {
           </button>
         </div>
 
-        {/* ለስልክ (Mobile View) የሚታዩ አዝራሮች */}
+        
         <div className="mobile-actions">
-          {/* በስልክም Theme መቀየር እንዲችሉ */}
+         
           <button 
             type="button"
             className="theme-btn mobile-theme-btn" 
@@ -69,7 +69,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
             {isDark ? <Sun size={18} color="#fbbf24" /> : <Moon size={18} color="#6366f1" />}
           </button>
 
-          {/* የ ☰ (Hamburger) እና የ ✕ (Close) መቀያየሪያ */}
+          
           <button 
             className="hamburger-btn" 
             onClick={toggleMobileMenu}
@@ -81,7 +81,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
 
       </div>
 
-      {/* በስልክ ሲነካ ተንሸራቶ የሚወርደው የሊንኮች ዝርዝር */}
+      
       <div className={`mobile-dropdown ${isMobileMenuOpen ? 'open' : ''}`}>
         <a href="#home" className="mobile-link" onClick={closeMobileMenu}>
           <Home size={18} />

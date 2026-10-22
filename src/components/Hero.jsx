@@ -8,7 +8,7 @@ const Hero = () => {
   const [showQrModal, setShowQrModal] = useState(false);
   const portfolioUrl = "https://github.com/bezi35";
 
-  // Typing Animation ዝርዝር
+  
   const titles = [
     "Full-Stack MERN Developer.",
     "Scalable Systems Architect.",
@@ -25,7 +25,7 @@ const Hero = () => {
     let speed = isDeleting ? 40 : 80; // የመጻፊያ እና የማጥፊያ ፍጥነት
 
     if (!isDeleting && currentText === fullText) {
-      speed = 1800; // ጽሑፉ ተጽፎ ሲያልቅ ለአፍታ ቆም የሚልበት ሰዓት
+      speed = 1800; 
     }
 
     const timer = setTimeout(() => {
@@ -47,13 +47,12 @@ const Hero = () => {
   return (
     <section className="hero" id="home">
       
-      {/* ጀርባ ላይ የሚታዩ የሚያበሩ ኦውራዎች */}
+      
       <div className="ambient-glow glow-1"></div>
       <div className="ambient-glow glow-2"></div>
 
       <div className="hero-content">
         
-        {/* የግራው ክፍል */}
         <div className="hero-text-col">
           <div className="status-badge">
             <span className="pulsing-dot"></span>
@@ -66,7 +65,7 @@ const Hero = () => {
             and systems that scale.
           </h1>
 
-          {/* እየተጻፈ የሚቀያየረው ማዕረግ (Typing Animation) */}
+          
           <div className="typing-container">
             <span className="typing-prefix">I am a </span>
             <span className="typing-animated-text">{currentText}</span>
@@ -74,7 +73,7 @@ const Hero = () => {
           </div>
 
           <p className="hero-bio">
-            I am <strong className="text-white">Bezawite Zelalem</strong>, a 4th-year Software Engineering student blending solid engineering principles with modern, high-performance web design. Specializing in the MERN stack.
+            I am <strong className="text-white">Bezawite Zelalem</strong>, a  Software Engineering student blending solid engineering principles with modern, high-performance web design. Specializing in the MERN stack.
           </p>
 
           <div className="hero-cta-group">

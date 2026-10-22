@@ -43,7 +43,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* የኮምፒውተር ሊንኮች */
+
 .desktop-links {
   display: flex;
   flex-direction: row;
@@ -101,7 +101,7 @@
   transform: scale(1.08);
 }
 
-/* የስልክ አዝራሮች (በኮምፒውተር ላይ እንዳይታዩ ይደበቃሉ) */
+
 .mobile-actions {
   display: none;
   align-items: center;
@@ -119,7 +119,7 @@
   padding: 6px;
 }
 
-/* በስልክ የሚወርደው ሜኑ (Mobile Dropdown) */
+
 .mobile-dropdown {
   position: absolute;
   top: 75px;
@@ -159,14 +159,14 @@
   font-weight: 600;
 }
 
-/* 📱 Responsive Media Queries (ስክሪኑ ከ 768px በታች ሲሆን) */
+
 @media (max-width: 768px) {
   .desktop-links {
-    display: none; /* የኮምፒውተሩ ሊንኮች ይጠፋሉ */
+    display: none; 
   }
 
   .mobile-actions {
-    display: flex; /* የስልኩ ቁልፎች ይወጣሉ */
+    display: flex; 
   }
 
   .navbar-container {
@@ -174,7 +174,7 @@
   }
 }
 
-/* Light Mode ድጋፍ ለስልክ ሜኑ */
+
 .light-theme .mobile-dropdown {
   background: rgba(255, 255, 255, 0.95);
   border-bottom-color: rgba(0, 0, 0, 0.08);
