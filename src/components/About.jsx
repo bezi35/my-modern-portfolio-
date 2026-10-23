@@ -43,7 +43,7 @@ const About = () => {
               Disciplined. Curious. Creative.
             </h3>
             <p className="bio-text">
-              As a 4th-year Software Engineering student, I approach software not just as syntax, but as dynamic problem-solving. My core focus is building full-stack web applications that balance robust backend systems with fluid, modern frontend designs.
+              I am a Software Engineering student, I approach software not just as syntax, but as dynamic problem-solving. My core focus is building full-stack web applications that balance robust backend systems with fluid, modern frontend designs.
             </p>
             <p className="bio-text">
               I am constantly exploring best engineering practices, participating in code sprints, and refining my expertise in the MERN ecosystem. I'm eager to bring energy, high technical capability, and dedication to a forward-thinking engineering team.
@@ -51,8 +51,8 @@ const About = () => {
 
             <div className="stats-row">
               <div className="stat-item">
-                <span className="stat-number">4th</span>
-                <span className="stat-label">Year Engineering</span>
+                <span className="stat-number">Wollo </span>
+                <span className="stat-label"> university</span>
               </div>
               <div className="stat-item">
                 <span className="stat-number">15+</span>

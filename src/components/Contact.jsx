@@ -43,11 +43,11 @@ const Contact = () => {
           submitting: false,
           success: true,
           error: false,
-          message: data.message || 'መልዕክትዎ በተሳካ ሁኔታ ተልኳል!'
+          message: data.message || 'Your message has been sent successfully!!'
         });
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        throw new Error(data.message || 'ስህተት ተፈጥሯል!');
+        throw new Error(data.message || 'An error has occurred!');
       }
 
     } catch (err) {
@@ -56,7 +56,7 @@ const Contact = () => {
         submitting: false,
         success: false,
         error: true,
-        message: 'ሰርቨሩ ጋር መገናኘት አልተቻለም፤ እባክዎ እንደገና ይሞክሩ!'
+        message: 'Could not connect to the server. Please try again!'
       });
     }
   };
@@ -90,7 +90,7 @@ const Contact = () => {
                 <div>
                   <span className="info-label">Direct Email</span>
                   <a href="mailto:bezizola8@example.com" className="info-value">
-                    bezizola8@example.com
+                    bezizola8@gmail.com
                   </a>
                 </div>
               </div>
@@ -134,7 +134,7 @@ const Contact = () => {
                   style={{ marginTop: '20px' }}
                   onClick={() => setStatus({ ...status, success: false })}
                 >
-                  አዲስ መልዕክት ላክ
+                  Send New Message
                 </button>
               </div>
             ) : (
@@ -155,7 +155,7 @@ const Contact = () => {
                       name="name" 
                       value={formData.name} 
                       onChange={handleChange}
-                      placeholder="Jane Doe" 
+                      placeholder="your name" 
                       required 
                       className="form-input"
                     />
@@ -167,7 +167,7 @@ const Contact = () => {
                       name="email" 
                       value={formData.email} 
                       onChange={handleChange}
-                      placeholder="jane@company.com" 
+                      placeholder="your email@company.com" 
                       required 
                       className="form-input"
                     />
@@ -201,7 +201,7 @@ const Contact = () => {
                 </div>
 
                 <button type="submit" className="submit-btn" disabled={status.submitting}>
-                  <span>{status.submitting ? 'በመላክ ላይ...' : 'Send Message'}</span>
+                  <span>{status.submitting ? 'Sending...' : 'Send Message'}</span>
                   <Send size={18} />
                 </button>
               </form>
