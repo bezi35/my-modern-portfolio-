@@ -16,43 +16,36 @@ const PORT = 5001;
 app.use(cors());
 app.use(express.json());
 
-const MONGO_URI = "mongodb+srv://bezizola8_db_user:Bezawite35@cluster0.qdmjeuj.mongodb.net/portfolio_db?retryWrites=true&w=majority";
+
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose.connect(MONGO_URI)
-  .then(() => console.log("🍃 MongoDB Atlas Connected Successfully!"))
+  .then(() => console.log("🍃 MongoDB Atlas (Porto) Connected Successfully!"))
   .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
 app.get('/', (req, res) => {
   res.send("🚀 Server is Live!");
 });
 
-// 1. የተመዘገቡትን መልዕክቶች በሙሉ ለማየት
-app.get('/api/messages', async (req, res) => {
-  try {
-    const allMessages = await Message.find().sort({ createdAt: -1 });
-    res.json({
-      count: allMessages.length,
-      data: allMessages
-    });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// 2. አዲስ መልዕክት መቀበያ
 app.post('/api/contact', async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
+
+    console.log("=========================================");
+    console.log(`📬 አዲስ መልዕክት ደረሰ ከ: ${name} (${email})`);
+    console.log(`💬 መልዕክት: ${message}`);
 
     const newMessage = new Message({ name, email, subject, message });
     const saved = await newMessage.save();
 
     console.log("✅ ዳታቤዝ ውስጥ ገባ! ID:", saved._id);
+    console.log("=========================================\n");
 
     return res.status(200).json({
       success: true,
-      message: "መልዕክትዎ በሰላም ደርሶኛል!"
+      message: "መልዕክትዎ በሰላም ደርሶኛል! እናመሰግናለን!"
     });
+
   } catch (error) {
     console.error("Save Error:", error);
     return res.status(500).json({ success: false, message: "Error" });

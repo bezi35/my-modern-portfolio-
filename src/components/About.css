@@ -11,7 +11,7 @@
   width: 100%;
 }
 
-/* ርዕስ */
+
 .section-header {
   text-align: center;
   max-width: 650px;
@@ -42,7 +42,7 @@
   line-height: 1.6;
 }
 
-/* ዋናው Grid: ግራና ቀኝ */
+
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -50,7 +50,7 @@
   align-items: stretch;
 }
 
-/* ስለ አንቺ የሚናገረው ካርድ */
+
 .about-bio-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -76,7 +76,7 @@
   margin-bottom: 16px;
 }
 
-/* Stats */
+
 .stats-row {
   display: flex;
   gap: 20px;
@@ -105,7 +105,7 @@
   text-transform: uppercase;
 }
 
-/* Skills Column */
+
 .skills-column {
   display: flex;
   flex-direction: column;
@@ -179,14 +179,14 @@
   color: #10b981;
 }
 
-/* 📱 Responsive ለስልክ */
+
 @media (max-width: 860px) {
   .about-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* ☀️ Light Theme ድጋፍ */
+
 .light-theme .section-title {
   color: #0f172a;
 }

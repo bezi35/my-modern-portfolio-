@@ -1,7 +1,7 @@
 html {
-  scroll-behavior: smooth; /* <--- ገጹ በልስላሴ እንዲንሸራተት የሚያደርገው ይሄ ነው! */
+  scroll-behavior: smooth; 
 }
-/* ሊንኮቹ ሲነኩ ከ Navbarሩ በታች በልስላሴ እንዲቆሙ ክፍተት ይሰጣቸዋል */
+
 section {
   scroll-margin-top: 80px;
 }

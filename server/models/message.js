@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-// ወደ MongoDB የሚገባው መረጃ ቅርጽ
+
 const messageSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -22,7 +22,7 @@ const messageSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now // መልዕክቱ የተላከበት ቀንና ሰዓት
+    default: Date.now 
   }
 });
 

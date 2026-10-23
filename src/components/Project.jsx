@@ -3,7 +3,7 @@ import { ExternalLink, Sparkles, FolderGit2 } from 'lucide-react';
 import './Project.css';
 
 const Projects = () => {
-  // የሰራሻቸው ፕሮጀክቶች ዝርዝር
+  
   const myProjects = [
     {
       id: 1,
@@ -38,7 +38,7 @@ const Projects = () => {
     <section className="projects-section" id="projects">
       <div className="projects-container">
         
-        {/* 1. ርዕስ (Header) */}
+       
         <div className="section-header">
           <span className="section-tag">ENGINEERING PORTFOLIO</span>
           <h2 className="section-title">Featured <span className="gradient-text">Software Works</span></h2>
@@ -47,30 +47,29 @@ const Projects = () => {
           </p>
         </div>
 
-        {/* 2. የፕሮጀክቶች ዝርዝር (Cards Grid) */}
+        
         <div className="projects-grid">
           {myProjects.map((project) => (
             <div key={project.id} className="project-card">
               
-              {/* የፕሮጀክቱ ፎቶ */}
+             
               <div className="project-image-box">
                 <img src={project.image} alt={project.title} className="project-img" />
                 <div className="project-img-overlay"></div>
               </div>
 
-              {/* የፕሮጀክቱ መረጃ */}
               <div className="project-content">
                 <h3 className="project-title">{project.title}</h3>
                 <p className="project-desc">{project.description}</p>
 
-                {/* ቴክኖሎጂዎች (Tags) */}
+               
                 <div className="project-tags">
                   {project.tags.map((tag, idx) => (
                     <span key={idx} className="project-tag-pill">{tag}</span>
                   ))}
                 </div>
 
-                {/* አዝራሮች (GitHub & Live Demo) */}
+                
                 <div className="project-actions">
                   <a 
                     href={project.githubLink} 

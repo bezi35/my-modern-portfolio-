@@ -21,13 +21,13 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // መረጃውን ወደ Node.js Backend የምንልክበት ዋናው ፈንክሽን
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus({ submitting: true, success: false, error: false, message: '' });
 
     try {
-      // ወደ Backend ሰርቨራችን POST ጥሪ እናደርጋለን
+     
       const response = await fetch('http://localhost:5001/api/contact', {
         method: 'POST',
         headers: {
@@ -89,8 +89,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <span className="info-label">Direct Email</span>
-                  <a href="mailto:bezawite.zelalem@example.com" className="info-value">
-                    bezawite.zelalem@example.com
+                  <a href="mailto:bezizola8@example.com" className="info-value">
+                    bezizola8@example.com
                   </a>
                 </div>
               </div>
@@ -101,7 +101,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <span className="info-label">Phone & Telegram</span>
-                  <span className="info-value">+251 900 000 000</span>
+                  <span className="info-value">+251 935476440</span>
                 </div>
               </div>
 

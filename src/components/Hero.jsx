@@ -22,7 +22,7 @@ const Hero = () => {
 
   useEffect(() => {
     const fullText = titles[textIndex];
-    let speed = isDeleting ? 40 : 80; // የመጻፊያ እና የማጥፊያ ፍጥነት
+    let speed = isDeleting ? 40 : 80; 
 
     if (!isDeleting && currentText === fullText) {
       speed = 1800; 
@@ -82,7 +82,7 @@ const Hero = () => {
               <ArrowUpRight size={18} />
             </a>
 
-            {/* Resume CV Download Button */}
+            
             <a 
               href="/resume.pdf" 
               download="Bezawite_Zelalem_CV.pdf"
@@ -109,7 +109,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* የቀኙ ክፍል: ፎቶ እና Floating Cards */}
+        
         <div className="hero-visual-col">
           <div className="visual-wrapper">
             
@@ -124,7 +124,7 @@ const Hero = () => {
 
             
 
-            {/* Floating Card: Stack */}
+            
             <div className="floating-card float-bottom-right">
               <div className="float-icon-box pink-box">
                 <Layers size={18} />
@@ -142,7 +142,7 @@ const Hero = () => {
 
       </div>
 
-      {/* QR Code Modal Popup */}
+      
       {showQrModal && (
         <div className="modal-backdrop" onClick={() => setShowQrModal(false)}>
           <div className="modal-card" onClick={(e) => e.stopPropagation()}>

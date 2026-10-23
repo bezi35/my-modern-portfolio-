@@ -3,7 +3,7 @@ import { Code2, Server, Database, GitBranch, Cpu, Award, BookOpen, CheckCircle2 
 import './About.css';
 
 const About = () => {
-  // የክህሎት ምድቦች ዝርዝር
+  
   const skillCategories = [
     {
       title: "Frontend Engineering",
@@ -26,7 +26,7 @@ const About = () => {
     <section className="about-section" id="about">
       <div className="about-container">
         
-        {/* 1. ርዕስ */}
+        
         <div className="section-header">
           <span className="section-tag">ENGINEERING MINDSET</span>
           <h2 className="section-title">Beyond The Code: <span className="gradient-text">Who I Am</span></h2>
@@ -35,7 +35,7 @@ const About = () => {
           </p>
         </div>
 
-        {/* 2. ስለ አንቺ ማብራሪያ እና ስታስቲክስ */}
+       
         <div className="about-grid">
           
           <div className="about-bio-card">
@@ -49,7 +49,6 @@ const About = () => {
               I am constantly exploring best engineering practices, participating in code sprints, and refining my expertise in the MERN ecosystem. I'm eager to bring energy, high technical capability, and dedication to a forward-thinking engineering team.
             </p>
 
-            {/* ፈጣን ስታስቲክስ (Stats) */}
             <div className="stats-row">
               <div className="stat-item">
                 <span className="stat-number">4th</span>
@@ -66,7 +65,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* 3. የቴክኖሎጂ ክህሎቶች (Skills Matrix) */}
+          
           <div className="skills-column">
             {skillCategories.map((category, idx) => (
               <div key={idx} className="skill-card">
