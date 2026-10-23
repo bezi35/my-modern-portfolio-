@@ -32,18 +32,18 @@ app.post('/api/contact', async (req, res) => {
     const { name, email, subject, message } = req.body;
 
     console.log("=========================================");
-    console.log(`📬 አዲስ መልዕክት ደረሰ ከ: ${name} (${email})`);
-    console.log(`💬 መልዕክት: ${message}`);
+    console.log(`📬 "New message received from: ${name} (${email})`);
+    console.log(`💬 message: ${message}`);
 
     const newMessage = new Message({ name, email, subject, message });
     const saved = await newMessage.save();
 
-    console.log("✅ ዳታቤዝ ውስጥ ገባ! ID:", saved._id);
+    console.log("✅ Saved to database! ID:", saved._id);
     console.log("=========================================\n");
 
     return res.status(200).json({
       success: true,
-      message: "መልዕክትዎ በሰላም ደርሶኛል! እናመሰግናለን!"
+      message: "Your message has been received safely! Thank you!"
     });
 
   } catch (error) {
