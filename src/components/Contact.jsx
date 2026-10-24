@@ -28,7 +28,7 @@ const Contact = () => {
 
     try {
      
-      const response = await fetch('http://localhost:5001/api/contact', {
+      const response = await fetch('https://my-modern-portfolio-jre9.onrender.com/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

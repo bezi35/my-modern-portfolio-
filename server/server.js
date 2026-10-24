@@ -17,7 +17,8 @@ app.use(cors());
 app.use(express.json());
 
 
-const MONGO_URI = process.env.MONGO_URI;
+MONGO_URI=mongodb+srv://bezizola8_db_user:bezi3547@porto.tvgu9cl.mongodb.net/portfolio_db?retryWrites=true&w=majority
+PORT=5001
 
 mongoose.connect(MONGO_URI)
   .then(() => console.log("🍃 MongoDB Atlas (Porto) Connected Successfully!"))
