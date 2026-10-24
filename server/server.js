@@ -6,7 +6,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import Message from './models/Message.js';
+import Message from './models/message.js';
 
 dotenv.config();
 

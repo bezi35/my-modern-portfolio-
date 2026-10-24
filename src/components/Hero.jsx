@@ -6,7 +6,7 @@ import './Hero.css';
 
 const Hero = () => {
   const [showQrModal, setShowQrModal] = useState(false);
-  const portfolioUrl = "https://github.com/bezi35";
+  const portfolioUrl = "https://modern-portfolio-ac7b9b.netlify.app";
 
   
   const titles = [
